@@ -1,6 +1,9 @@
-.idea/
+/.idea/
+.idea/*
 .idea/**
 *.pyc
 *.log
 *.db
+*.xml
+*.iml
 **/*.xml
