@@ -18,7 +18,6 @@ def create_app():
     app = Flask(__name__)
     config_name = os.getenv('FLASK_CONFIGURATION', 'default')
     app.config.from_object(CONFIG[config_name])
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@127.0.0.1:3307/scheduler'
     app.secret_key = app.config['SECRET_KEY']
     utilities.setup_logger()
     db.init_app(app)
@@ -59,8 +58,10 @@ def create_employees(N):
             username='Admin',
             password=utils.encrypt_password('PASSWORD'))
 
+
         sls = Servicelocation.query.all()
         rs = Role.query.all()
+
         for _ in range(N):
             sl = random.choice(sls)
             r = random.choice(rs)
