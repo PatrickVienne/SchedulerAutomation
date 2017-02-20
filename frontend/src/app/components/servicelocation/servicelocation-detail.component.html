@@ -1,0 +1,13 @@
+<p>
+  servicelocation-detail works!
+</p>
+<div *ngIf="servicelocation">
+  <h1 *ngIf="servicelocation.id!=0"> Servicelocation ID: {{servicelocation.id}} </h1>
+  <h1 *ngIf="servicelocation.id==0"> New Servicelocation </h1>
+  <input type="text" [(ngModel)] = servicelocation.name>
+  <input type="text" [(ngModel)] = servicelocation.shortname>
+  <input type="checkbox" [(ngModel)] = servicelocation.nightshiftneeded>
+  <input type="text" [(ngModel)] = servicelocation.comment>
+  <button (click)="save()"> Save </button>
+  <button (click)="cancel()"> Cancel (Back) </button>
+</div>

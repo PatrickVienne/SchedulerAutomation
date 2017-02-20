@@ -1,0 +1,13 @@
+<p>
+  WTF employees works!
+</p>
+
+<button class="create" (click)="create(); $event.stopPropagation()">Create New Employee</button>
+
+<ul class="employees">
+  <li *ngFor="let employee of employees">
+    <span class="badge">{{employee.id}}</span> {{employee.firstname}}
+    <button class="delete" (click)="delete(employee); $event.stopPropagation();">x</button>
+    <button class="edit" (click)="edit(employee); $event.stopPropagation();">e</button>
+  </li>
+</ul>

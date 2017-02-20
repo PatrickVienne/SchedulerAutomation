@@ -1,0 +1,13 @@
+<p>
+  servicelocations works!
+</p>
+
+<button class="create" (click)="create(); $event.stopPropagation()">Create New Servce</button>
+
+<ul class="servicelocations">
+  <li *ngFor="let servicelocation of servicelocations">
+    <span class="badge">{{servicelocation.id}}</span> {{servicelocation.name}}
+    <button class="delete" (click)="delete(servicelocation); $event.stopPropagation();">x</button>
+    <button class="edit" (click)="edit(servicelocation); $event.stopPropagation();">e</button>
+  </li>
+</ul>

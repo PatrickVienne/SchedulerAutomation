@@ -1,0 +1,20 @@
+<p>
+  employee-detail works!
+</p>
+<div *ngIf="employee">
+  <h1 *ngIf="employee.id!=0"> Employee ID: {{employee.id}} </h1>
+  <h1 *ngIf="employee.id==0"> New Employee </h1>
+  <input type="text" [(ngModel)]="employee.firstname">
+  <input type="text" [(ngModel)]="employee.lastname">
+  <input type="text" [(ngModel)]="employee.username">
+  <input type="checkbox" [(ngModel)]="employee.nightshift">
+  <input type="checkbox" [(ngModel)]="employee.active">
+  <input type="date" [(ngModel)]="employee.employedsince" useValueAsDate>
+  <input type="number" [(ngModel)]="employee.servicelocationid">
+  <input type="number" [(ngModel)]="employee.weeklyhours">
+  <input type="number" [(ngModel)]="employee.vacationdays">
+  <input type="text" [(ngModel)]="employee.comments">
+  <button (click)="save()"> Save </button>
+  <button (click)="cancel()"> Cancel (Back) </button>
+  <app-dropdownlist [dropdownitems]="superArrayInEmployeeDetail" [activeid]="employee.servicelocationid"></app-dropdownlist>
+</div>
