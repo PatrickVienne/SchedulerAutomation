@@ -36,3 +36,16 @@ Router not good.
 Breaking compatibility.
 Watch out for version updates.
 
+if router modules have a problem, router-outlet error warning appears
+
+# angular-cli version update
+
+problem:
+angular beta30 had no ng init anymore
+cannot initialize project
+
+solution:
+update angular-cli to latest version (look up github description), create a new project folder with ng new.
+copy old app to new project. ONLY App folder (htmls, ts files, not package.json or angular-cli.json)
+
+
