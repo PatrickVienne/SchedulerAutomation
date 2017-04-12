@@ -52,15 +52,23 @@ def create_roles(N):
 def create_employees(N):
     if not Employee.query.first():
 
+        sls = Servicelocation.query.all()
+        rs = Role.query.all()
+
         user_datastore.create_user(
             firstname='Admin',
             lastname='Admin',
             username='Admin',
-            password=utils.encrypt_password('PASSWORD'))
+            password=utils.encrypt_password('PASSWORD'),
+            nightshift=True,
+            active=True,
+            employedsince=datetime.datetime(2001, 1, 1),
+            servicelocationid=random.choice(sls).id,
+            weeklyhours=25,
+            vacationdays=100
+        )
 
 
-        sls = Servicelocation.query.all()
-        rs = Role.query.all()
 
         for _ in range(N):
             sl = random.choice(sls)
