@@ -10,6 +10,9 @@ CONFIG = {
     "default": "config.ProductionConfig"
 }
 
+USERNAME = "scheduler"
+PASSWORD = "scheduler"
+URI = 'mysql://{user}:{pw}@127.0.0.1:3307/scheduler'.format(user=USERNAME,pw=PASSWORD)
 
 class BaseConfig(object):
     """Base class for default set of configs."""
@@ -46,7 +49,7 @@ class DevelopmentConfig(BaseConfig):
     TESTING = False
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASEDIR, 'app.db')
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@127.0.0.1:3307/scheduler'
+    SQLALCHEMY_DATABASE_URI = URI
     SECRET_KEY = 'not-so-super-secret'
 
 
@@ -56,7 +59,7 @@ class ProductionConfig(BaseConfig):
     DEBUG = False
     TESTING = False
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@127.0.0.1:3307/scheduler'
+    SQLALCHEMY_DATABASE_URI = URI
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASEDIR, 'app.db')
     SECRET_KEY = 'Super-awesome-secret-stuff'
 
@@ -67,5 +70,5 @@ class TestingConfig(BaseConfig):
     DEBUG = False
     TESTING = True
     #SQLALCHEMY_DATABASE_URI = 'sqlite://'
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:root@127.0.0.1:3307/scheduler'
+    SQLALCHEMY_DATABASE_URI = URI
     SECRET_KEY = '792842bc-c4df-4de1-9177-d5207bd9faa6'
