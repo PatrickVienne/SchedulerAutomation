@@ -49,3 +49,21 @@ update angular-cli to latest version (look up github description), create a new 
 copy old app to new project. ONLY App folder (htmls, ts files, not package.json or angular-cli.json)
 
 
+problem:
+integrate bootstrap 4
+solution:
+follow
+https://www.npmjs.com/package/ngx-bootstrap
+https://github.com/valor-software/ngx-bootstrap/blob/development/docs/getting-started/ng-cli.md
+
+
+## description bootstrap from websites:
+npm install ngx-bootstrap --save
+<!--- index.html -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+
+open .angular-cli.json and insert a new entry into the styles array
+      "styles": [
+         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "styles.css",
+      ],

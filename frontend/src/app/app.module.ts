@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { AlertModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { ROUTES } from './app-routing.module';
 import { EmployeesComponent } from './components/employee/employees.component';
@@ -40,6 +40,7 @@ import { DropdownlistComponent } from './components/dropdownlist/dropdownlist.co
     BrowserModule,
     FormsModule,
     HttpModule,
+    AlertModule.forRoot(),  
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [EmployeeService, ServiceLocationService, RoleService],
