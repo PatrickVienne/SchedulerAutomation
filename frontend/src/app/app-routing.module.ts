@@ -8,7 +8,8 @@ import { ServicelocationDetailComponent } from './components/servicelocation/ser
 import { RolesComponent } from './components/role/roles.component';
 
 
-const routes: Routes = [
+
+export const ROUTES: Routes = [
       {
         path: 'employees',
         component: EmployeesComponent
@@ -30,12 +31,5 @@ const routes: Routes = [
         component: RolesComponent
       }
 
-      
+
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule { }
-

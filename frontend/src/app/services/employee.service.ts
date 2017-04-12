@@ -23,7 +23,7 @@ export class EmployeeService {
   get(id: number): Promise<Employee> {
     return this.http.get(this.employeeUrl + "/get/"+id)
             .toPromise()
-            .then(response => response.json() as Employee[])
+            .then(response => response.json() as Employee)
             .catch(Handler.handleError);
   }
 

@@ -23,7 +23,7 @@ export class ServiceLocationService {
   get(id: number): Promise<ServiceLocation> {
     return this.http.get(this.servicelocationUrl + "/get/"+id)
             .toPromise()
-            .then(response => response.json() as ServiceLocation[])
+            .then(response => response.json() as ServiceLocation)
             .catch(Handler.handleError);
   }
 

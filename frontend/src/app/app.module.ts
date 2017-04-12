@@ -4,8 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { ROUTES } from './app-routing.module';
 import { EmployeesComponent } from './components/employee/employees.component';
+
+import {
+  RouterModule,
+  PreloadAllModules
+} from '@angular/router';
 
 import { EmployeeService } from './services/employee.service';
 import { ServiceLocationService } from './services/servicelocation.service';
@@ -35,7 +40,7 @@ import { DropdownlistComponent } from './components/dropdownlist/dropdownlist.co
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [EmployeeService, ServiceLocationService, RoleService],
   bootstrap: [AppComponent]
