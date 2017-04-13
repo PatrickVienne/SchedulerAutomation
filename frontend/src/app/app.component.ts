@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Task Scheduler';
+  public title: string = 'Task Scheduler';
+  public isCollapsed: boolean = true;
 }

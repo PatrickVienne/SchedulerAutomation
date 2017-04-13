@@ -48,7 +48,7 @@ solution:
 update angular-cli to latest version (look up github description), create a new project folder with ng new.
 copy old app to new project. ONLY App folder (htmls, ts files, not package.json or angular-cli.json)
 
-
+# bootstrap 4 integration
 problem:
 integrate bootstrap 4
 solution:
@@ -57,7 +57,7 @@ https://www.npmjs.com/package/ngx-bootstrap
 https://github.com/valor-software/ngx-bootstrap/blob/development/docs/getting-started/ng-cli.md
 
 
-## description bootstrap from websites:
+-- description bootstrap from websites:
 npm install ngx-bootstrap --save
 <!--- index.html -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
@@ -67,3 +67,30 @@ open .angular-cli.json and insert a new entry into the styles array
          "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.css",
       ],
+
+# navbar collaps
+problem:
+navbar collapse button not working (not opening navbar on small windows on click)
+solution:
+http://stackoverflow.com/questions/37438683/is-there-a-way-to-build-the-mobile-nav-bar-in-ng2-bootsrap
+
+1)first you import the directive
+import { CollapseDirective } from 'ng2-bootstrap'
+
+2)Directives (in the current stable version of angular 2) are no longer placed in the @Component attribute.
+They are included in the NgModule attribute.
+@NgModule({ declarations: [CollapseDirective] })
+
+3)then in your controller create a variable to keep track of whether or not it's collapsed
+export class MyController {
+ public isCollapsed: boolean = true;
+}
+
+4)and in your template the line that looks like this 
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" >
+you'll want to toggle the variable
+<button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed" >
+
+5)And also in your template you'll want to change the line that says
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> to include the directive
+<div id="navbar" class="navbar-collapse collapse" [collapse]="isCollapsed">

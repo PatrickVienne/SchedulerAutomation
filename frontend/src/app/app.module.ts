@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ngx-bootstrap';
+import { CollapseDirective } from 'ngx-bootstrap'
 import { AppComponent } from './app.component';
 import { ROUTES } from './app-routing.module';
 import { EmployeesComponent } from './components/employee/employees.component';
+
 
 import {
   RouterModule,
@@ -34,6 +36,7 @@ import { DropdownlistComponent } from './components/dropdownlist/dropdownlist.co
     RoleDetailComponent,
     RolesComponent,
     DropdownlistComponent,
+    CollapseDirective,
   ],
   imports: [
     DateValueAccessorModule,
