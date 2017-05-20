@@ -122,6 +122,11 @@ def get_servicelocation(id):
     else:
         return json.dumps({"id": 0, "name":""})
 
+@app.route('/roles_detail/get_roles', methods=['GET'])
+def get_roles():
+    return json.dumps([role.to_dict() for role in Role.query.all()])
+
+
 @app.route('/role/get_roles', methods=['GET'])
 def get_roles():
     return json.dumps([role.to_dict() for role in Role.query.all()])

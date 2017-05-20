@@ -6,6 +6,7 @@ import { EmployeeDetailComponent } from './components/employee/employee-detail.c
 import { ServicelocationsComponent } from './components/servicelocation/servicelocations.component';
 import { ServicelocationDetailComponent } from './components/servicelocation/servicelocation-detail.component';
 import { RolesComponent } from './components/role/roles.component';
+import { RoleDetailComponent } from './components/role/role-detail.component';
 
 
 
@@ -29,6 +30,10 @@ export const ROUTES: Routes = [
       {
         path: 'roles',
         component: RolesComponent
+      },
+      {
+        path: 'roles_detail/:id',
+        component: RoleDetailComponent
       }
 
 

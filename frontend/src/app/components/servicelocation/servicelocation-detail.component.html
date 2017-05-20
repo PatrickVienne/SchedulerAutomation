@@ -1,12 +1,10 @@
-<div class="container">
-  <div *ngIf="servicelocation">
-    <h1 *ngIf="servicelocation.id!=0"> Servicelocation ID: {{servicelocation.id}} </h1>
-    <h1 *ngIf="servicelocation.id==0"> New Servicelocation </h1>
-    <div class="form-group row"> <label for="input_name" class="col-2 col-form-label">Text</label><div class="col-10"><input id="input_name" type="text" [(ngModel)] = servicelocation.name></div></div>
-    <div class="form-group row"> <label for="input_shortname" class="col-2 col-form-label">Text</label><div class="col-10"><input id="input_shortname" type="text" [(ngModel)] = servicelocation.shortname></div></div>
-    <div class="form-group row"> <label for="input_nightshiftneeded" class="col-2 col-form-label">Text</label><div class="col-10"><input id="input_nightshiftneeded" type="checkbox" [(ngModel)] = servicelocation.nightshiftneeded></div></div>
-    <div class="form-group row"> <label for="input_comment" class="col-2 col-form-label">Text</label><div class="col-10"><input id="input_comment" type="text" [(ngModel)] = servicelocation.comment></div></div>
-    <button (click)="save()"> Save </button>
-    <button (click)="cancel()"> Cancel (Back) </button>
-  </div>
+<div class="container" *ngIf="servicelocation">
+    <h5 *ngIf="servicelocation.id!=0" class="row pb-1 pt-1"><div class="col">Servicelocation ID {{employee.id}}</div></h5>
+    <h5 *ngIf="servicelocation.id==0" class="row pb-1 pt-1"><div class="col">New Servicelocation</div></h5>
+    <div class="form-group row"> <label for="input_name" class="col-2 col-form-label">Location Name</label><div class="col-10"><input class="form-control" id="input_name" type="text" [(ngModel)] = servicelocation.name></div></div>
+    <div class="form-group row"> <label for="input_shortname" class="col-2 col-form-label">Shortname</label><div class="col-10"><input class="form-control" id="input_shortname" type="text" [(ngModel)] = servicelocation.shortname></div></div>
+    <div class="form-group row"> <label for="input_comment" class="col-2 col-form-label">Comment</label><div class="col-10"><input class="form-control" id="input_comment" type="text" [(ngModel)] = servicelocation.comment></div></div>
+    <div class="form-group row"> <label class="col-2">Nightshift</label> <div class="col-10"> <div class="form-check"> <label class="form-check-label" for="input_nightshiftneeded" >            <input class="form-check-input"  id="input_nightshiftneeded" type="checkbox" [(ngModel)] = servicelocation.nightshiftneeded> </label> </div> </div> </div>
+    <button class="btn btn-primary" (click)="save()"> Save </button>
+    <button class="btn btn-danger" (click)="cancel()"> Cancel (Back) </button>
 </div>

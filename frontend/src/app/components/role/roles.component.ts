@@ -19,13 +19,21 @@ export class RolesComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.getEmployees();
+    this.getRoles();
   }
 
-
-  getEmployees(): void {
+  getRoles(): void {
     this.roleService.getRoles()
       .then(rolesFromPromise => this.roles = rolesFromPromise);
+  }
+
+  edit(role: Role): void {
+    console.log(role.id)
+    this.router.navigate(["/roles_detail",role.id]);
+  }
+
+  create(role: Role): void {
+    this.router.navigate(["/roles_detail",0]);
   }
 
 }

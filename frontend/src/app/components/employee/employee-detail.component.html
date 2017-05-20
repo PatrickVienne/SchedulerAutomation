@@ -1,8 +1,5 @@
 <div *ngIf="employee" class="container">
-  <h5 class="row pb-1 pt-1" *ngIf="employee.id!=0">
-    <div class="col-2">Employee ID</div>
-    <div class="col-10">{{employee.id}}</div>
-  </h5>
+  <h5 *ngIf="employee.id!=0" class="row pb-1 pt-1"><div class="col">Employee ID {{employee.id}}</div></h5>
   <h5 *ngIf="employee.id==0" class="row pb-1 pt-1"><div class="col">New Employee</div></h5>
   <div class="form-group row">
     <label for="employee-firstname" class="col-2 col-form-label">Firstname</label>

@@ -3,15 +3,15 @@
     <button class="btn btn-primary mb-1" (click)="create(); $event.stopPropagation()">Create New Role</button>
   </div>
   <div class="row mt-1 pt-1 pb-1 bg-info text-white">
-    <div class="col-1"><span class="badge badge-default badge-pill">ID</span> </div>
-    <div class="col-9">Role</div>
-    <div class="col-1"></div>
-    <div class="col-1"></div>
+    <div class="col-1 col-sm-1"><span class="badge badge-default badge-pill">ID</span> </div>
+    <div class="col-9 col-sm-9">Role</div>
+    <div class="col-1 col-sm-1"></div>
+    <div class="col-1 col-sm-1"></div>
   </div>
   <div class="row align-items-center mt-1 pt-1 pb-1 bg-faded" *ngFor="let role of roles">
-    <div class="col-1"><span class="badge badge-default badge-pill">{{role.id}}</span> </div>
-    <div class="col-9">{{role.name}}</div>
-    <div class="col-1"><button type="button" class="btn btn-secondary" (click)="edit(role); $event.stopPropagation();">Edit</button></div>
-    <div class="col-1"><button type="button" class="btn btn-danger" (click)="delete(role); $event.stopPropagation();">Delete</button></div>
+    <div class="col-1 col-sm-1"><span class="badge badge-default badge-pill">{{role.id}}</span> </div>
+    <div class="col-9 col-sm-9">{{role.name}}</div>
+    <div class="col-1 col-sm-1"><button type="button" class="btn btn-secondary" (click)="edit(role); $event.stopPropagation();">Edit</button></div>
+    <div class="col-1 col-sm-1"><button type="button" class="btn btn-danger" (click)="delete(role); $event.stopPropagation();">Delete</button></div>
   </div>
 </div>
