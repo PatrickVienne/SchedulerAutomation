@@ -1,20 +1,83 @@
-<p>
-  employee-detail works!
-</p>
-<div *ngIf="employee">
-  <h1 *ngIf="employee.id!=0"> Employee ID: {{employee.id}} </h1>
-  <h1 *ngIf="employee.id==0"> New Employee </h1>
-  <input type="text" [(ngModel)]="employee.firstname">
-  <input type="text" [(ngModel)]="employee.lastname">
-  <input type="text" [(ngModel)]="employee.username">
-  <input type="checkbox" [(ngModel)]="employee.nightshift">
-  <input type="checkbox" [(ngModel)]="employee.active">
-  <input type="date" [(ngModel)]="employee.employedsince" useValueAsDate>
-  <input type="number" [(ngModel)]="employee.servicelocationid">
-  <input type="number" [(ngModel)]="employee.weeklyhours">
-  <input type="number" [(ngModel)]="employee.vacationdays">
-  <input type="text" [(ngModel)]="employee.comments">
-  <button (click)="save()"> Save </button>
-  <button (click)="cancel()"> Cancel (Back) </button>
-  <app-dropdownlist [dropdownitems]="superArrayInEmployeeDetail" [activeid]="employee.servicelocationid"></app-dropdownlist>
+<div *ngIf="employee" class="container">
+  <h5 class="row pb-1 pt-1" *ngIf="employee.id!=0">
+    <div class="col-2">Employee ID</div>
+    <div class="col-10">{{employee.id}}</div>
+  </h5>
+  <h5 *ngIf="employee.id==0" class="row pb-1 pt-1"><div class="col">New Employee</div></h5>
+  <div class="form-group row">
+    <label for="employee-firstname" class="col-2 col-form-label">Firstname</label>
+    <div class="col-10">
+      <input class="form-control" type="text" [(ngModel)]="employee.firstname" id="employee-firstname">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="employee-lastname" class="col-2 col-form-label">Lastname</label>
+    <div class="col-10">
+      <input class="form-control" type="text" [(ngModel)]="employee.lastname" id="employee-lastname">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="employee-username" class="col-2 col-form-label">Username</label>
+    <div class="col-10">
+      <input class="form-control" type="text" [(ngModel)]="employee.username" id="employee-username">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="employee-employedsince" class="col-2 col-form-label">Employed since</label>
+    <div class="col-10">
+      <input class="form-control" type="date" [(ngModel)]="employee.employedsince" useValueAsDate id="employee-employedsince">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="employee-servicelocationid" class="col-2 col-form-label">Servicelocation ID</label>
+    <div class="col-10">
+      <input class="form-control" type="number" [(ngModel)]="employee.servicelocationid" id="employee-servicelocationid">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="employee-weeklyhours" class="col-2 col-form-label">Weekly hours</label>
+    <div class="col-10">
+      <input class="form-control" type="number" [(ngModel)]="employee.weeklyhours" id="employee-weeklyhours">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="employee-vacationdays" class="col-2 col-form-label">Vacationdays</label>
+    <div class="col-10">
+      <input class="form-control" type="number" [(ngModel)]="employee.vacationdays" id="employee-vacationdays">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="employee-comments" class="col-2 col-form-label">Comments</label>
+    <div class="col-10">
+      <input class="form-control" type="text" [(ngModel)]="employee.comments" id="employee-comments">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Servicelocation</label>
+    <div class="col-10">
+      <app-dropdownlist [dropdownitems]="superArrayInEmployeeDetail" [activeid]="employee.servicelocationid"></app-dropdownlist>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2">Nightshift</label>
+    <div class="col-10">
+      <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="employee.nightshift">
+          </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2">Active</label>
+    <div class="col-10">
+      <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="employee.active">
+          </label>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="save()"> Save </button>
+  <button class="btn btn-danger" (click)="cancel()"> Cancel (Back) </button>
 </div>
