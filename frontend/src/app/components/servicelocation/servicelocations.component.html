@@ -1,13 +1,17 @@
-<p>
-  servicelocations works!
-</p>
-
-<button class="create" (click)="create(); $event.stopPropagation()">Create New Servce</button>
-
-<ul class="servicelocations">
-  <li *ngFor="let servicelocation of servicelocations">
-    <span class="badge">{{servicelocation.id}}</span> {{servicelocation.name}}
-    <button class="delete" (click)="delete(servicelocation); $event.stopPropagation();">x</button>
-    <button class="edit" (click)="edit(servicelocation); $event.stopPropagation();">e</button>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+    <button class="btn btn-primary mb-1" (click)="create(); $event.stopPropagation()">Create New Service</button>
+  </div>
+  <div class="row mt-1 pt-1 pb-1 bg-info text-white">
+    <div class="col-1"><span class="badge badge-default badge-pill">ID</span> </div>
+    <div class="col-9">Location</div>
+    <div class="col-1"></div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row align-items-center mt-1 pt-2 bg-faded" *ngFor="let servicelocation of servicelocations">
+    <div class="col-1"><span class="badge badge-default badge-pill">{{servicelocation.id}}</span> </div>
+    <div class="col-9">{{servicelocation.name}}</div>
+    <div class="col-1"><button type="button" class="btn btn-secondary" (click)="edit(servicelocation); $event.stopPropagation();">Edit</button></div>
+    <div class="col-1"><button type="button" class="btn btn-danger" (click)="delete(servicelocation); $event.stopPropagation();">Delete</button></div>
+  </div>
+</div>
