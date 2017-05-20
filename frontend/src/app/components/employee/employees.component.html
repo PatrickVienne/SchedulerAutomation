@@ -1,13 +1,17 @@
-<p>
-  WTF employees works!
-</p>
-
-<button class="create" (click)="create(); $event.stopPropagation()">Create New Employee</button>
-
-<ul class="employees">
-  <li *ngFor="let employee of employees">
-    <span class="badge">{{employee.id}}</span> {{employee.firstname}}
-    <button class="delete" (click)="delete(employee); $event.stopPropagation();">x</button>
-    <button class="edit" (click)="edit(employee); $event.stopPropagation();">e</button>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+    <button class="btn btn-primary mb-1" (click)="create(); $event.stopPropagation()">Create New Employee</button>
+  </div>
+  <div class="row mt-1 pt-1 pb-1 bg-info text-white">
+    <div class="col-1 text-center"><span class="badge badge-default badge-pill">#</span></div>
+    <div class="col-9">Name</div>
+    <div class="col-1 text-center">bla</div>
+    <div class="col-1 text-center">blubb</div>
+  </div>
+  <div *ngFor="let employee of employees" class="row align-items-center mt-1 pt-1 pb-1 bg-faded">
+    <div class="col-1 text-center"><span class="badge badge-default badge-pill">{{employee.id}}</span></div>
+    <div class="col-9">{{employee.firstname}}</div>
+    <div class="col-1 text-center"><button class="btn btn-secondary" (click)="edit(employee); $event.stopPropagation();">Edit</button></div>
+    <div class="col-1 text-center"><button class="btn btn-danger" (click)="delete(employee); $event.stopPropagation();">Delete</button></div>
+  </div>
+</div>
