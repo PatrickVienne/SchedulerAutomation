@@ -8,7 +8,7 @@
     <div class="col-1"></div>
     <div class="col-1"></div>
   </div>
-  <div class="row align-items-center mt-1 pt-2 bg-faded" *ngFor="let role of roles">
+  <div class="row align-items-center mt-1 pt-1 pb-1 bg-faded" *ngFor="let role of roles">
     <div class="col-1"><span class="badge badge-default badge-pill">{{role.id}}</span> </div>
     <div class="col-9">{{role.name}}</div>
     <div class="col-1"><button type="button" class="btn btn-secondary" (click)="edit(role); $event.stopPropagation();">Edit</button></div>
