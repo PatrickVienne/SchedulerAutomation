@@ -15,29 +15,30 @@ export class ServicelocationDetailComponent implements OnInit {
   servicelocation: ServiceLocation;
   exists: boolean;
 
-  constructor(private servicelocationService: ServiceLocationService,private router: ActivatedRoute, private location:Location) { }
+  constructor(private servicelocationService: ServiceLocationService, private router: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
     console.log("ID:", +this.router.params['id']);
     console.log("ID-snapshot:", +this.router.snapshot.params['id']);
     this.router.params
-          .switchMap((params:Params) =>this.servicelocationService.get(+params['id'])) // (+) converts string 'id' to a number
-          .subscribe(servicelocation => {
-            this.servicelocation = servicelocation;
-            console.log(this.servicelocation);}
-            );
+      .switchMap((params: Params) => this.servicelocationService.get(+params['id'])) // (+) converts string 'id' to a number
+      .subscribe(servicelocation => {
+        this.servicelocation = servicelocation;
+        console.log(this.servicelocation);
+      }
+      );
   }
 
-  save():void{
-    if (this.servicelocation.id != 0){
-      this.servicelocationService.update(this.servicelocation).then(()=>this.location.back());
-    }else{
-      this.servicelocationService.create(this.servicelocation).then(()=>this.location.back());
+  save(): void {
+    if (this.servicelocation.id != 0) {
+      this.servicelocationService.update(this.servicelocation).then(() => this.location.back());
+    } else {
+      this.servicelocationService.create(this.servicelocation).then(() => this.location.back());
     }
-    
+
   }
 
-  cancel():void{
+  cancel(): void {
     this.location.back();
   }
 }

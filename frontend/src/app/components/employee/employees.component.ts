@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { EmployeeService } from '../../services/employee.service';
 
-import{ Employee } from '../../models/employee';
+import { Employee } from '../../models/employee';
 
 @Component({
   selector: 'app-employees',
@@ -37,11 +37,11 @@ export class EmployeesComponent implements OnInit {
 
   edit(employee: Employee): void {
     console.log(employee.id)
-    this.router.navigate(["/employee_detail",employee.id]);
+    this.router.navigate(["/employee_detail", employee.id]);
   }
 
   create(employee: Employee): void {
-    this.router.navigate(["/employee_detail",0]);
+    this.router.navigate(["/employee_detail", 0]);
   }
 
 }

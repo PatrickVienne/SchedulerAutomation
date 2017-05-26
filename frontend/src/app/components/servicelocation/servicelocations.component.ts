@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { ServiceLocationService } from '../../services/servicelocation.service';
 
-import{ ServiceLocation } from '../../models/servicelocation';
+import { ServiceLocation } from '../../models/servicelocation';
 
 
 @Component({
@@ -39,11 +39,11 @@ export class ServicelocationsComponent implements OnInit {
 
   edit(servicelocation: ServiceLocation): void {
     console.log(servicelocation.id)
-    this.router.navigate(["/servicelocation_detail",servicelocation.id]);
+    this.router.navigate(["/servicelocation_detail", servicelocation.id]);
   }
 
   create(servicelocation: ServiceLocation): void {
-    this.router.navigate(["/servicelocation_detail",0]);
+    this.router.navigate(["/servicelocation_detail", 0]);
   }
 
 }

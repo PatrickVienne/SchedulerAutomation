@@ -39,6 +39,7 @@ def create_employee():
     db.session.add(emp)
     return make_response()
 
+
 @app.route('/employee/update', methods=['PUT'])
 def edit_employee():
     # print request.
@@ -53,6 +54,7 @@ def edit_employee():
     else:
         return make_response()
 
+
 @app.route('/employee/delete/<int:id>', methods=['DELETE'])
 def delete_employee(id):
     # print request.
@@ -63,9 +65,11 @@ def delete_employee(id):
         db.session.commit()
     return "Deleting %i" % id
 
+
 @app.route('/employee/get_employees', methods=['GET'])
 def get_employees():
     return json.dumps([emp.to_dict() for emp in Employee.query.all()])
+
 
 @app.route('/employee/get/<int:id>', methods=['GET'])
 def get_employee(id):
@@ -74,6 +78,7 @@ def get_employee(id):
         return json.dumps(emp.to_dict())
     else:
         return json.dumps({"id": 0, "firstname":""})
+
 
 @app.route('/servicelocation/create', methods=['PUT'])
 def create_servicelocation():
@@ -85,6 +90,7 @@ def create_servicelocation():
         sloc.__setattr__(k, v)
     db.session.add(sloc)
     return make_response()
+
 
 @app.route('/servicelocation/update', methods=['PUT'])
 def edit_servicelocation():
@@ -100,6 +106,7 @@ def edit_servicelocation():
     else:
         return make_response()
 
+
 @app.route('/servicelocation/delete/<int:id>', methods=['DELETE'])
 def delete_servicelocation(id):
     # print request.
@@ -110,9 +117,11 @@ def delete_servicelocation(id):
         db.session.commit()
     return "Deleting %i" % id
 
+
 @app.route('/servicelocation/get_servicelocations', methods=['GET'])
 def get_servicelocations():
     return json.dumps([sloc.to_dict() for sloc in Servicelocation.query.all()])
+
 
 @app.route('/servicelocation/get/<int:id>', methods=['GET'])
 def get_servicelocation(id):
@@ -121,10 +130,6 @@ def get_servicelocation(id):
         return json.dumps(sloc.to_dict())
     else:
         return json.dumps({"id": 0, "name":""})
-
-@app.route('/roles_detail/get_roles', methods=['GET'])
-def get_roles():
-    return json.dumps([role.to_dict() for role in Role.query.all()])
 
 
 @app.route('/role/get_roles', methods=['GET'])
