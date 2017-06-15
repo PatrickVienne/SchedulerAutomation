@@ -1,26 +1,26 @@
 <div class="container" *ngIf="shift">
-    <h5 *ngIf="shift.id!=0" class="row pb-1 pt-1">
-        <div class="col">Shift ID {{shift.id}}</div>
-    </h5>
-    <h5 *ngIf="shift.id==0" class="row pb-1 pt-1">
-        <div class="col">New Shift</div>
-    </h5>
-    <div class="form-group row">
-        <label for="input_name" class="col-sm-3 col-lg-2 col-form-label">Name</label>
-        <div class="col"><input class="form-control" id="input_name" type="text" [(ngModel)]=shift.name></div>
-    </div>
-    <div class="form-group row">
-        <label for="input_shortname" class="col-sm-3 col-lg-2 col-form-label">Shortname</label>
-        <div class="col"><input class="form-control" id="input_shortname" type="text" [(ngModel)]=shift.shortname></div>
-    </div>
-    <div class="form-group row">
-        <label for="input_starttime" class="col-sm-3 col-lg-2 col-form-label">Starttime</label>
-        <div class="col"><input class="form-control" id="input_starttime" type="text" [(ngModel)]=shift.starttime></div>
-    </div>
-    <div class="form-group row">
-        <label for="input_duration" class="col-sm-3 col-lg-2 col-form-label">Duration</label>
-        <div class="col"><input class="form-control" id="input_duration" type="text" [(ngModel)]=shift.duration></div>
-    </div>
-    <button class="btn btn-primary" (click)="save()">Save</button>
-    <button class="btn btn-danger" (click)="cancel()">Cancel (Back)</button>
+  <h5 *ngIf="shift.id!=0" class="row pb-1 pt-1">
+    <div class="col">Shift ID {{shift.id}}</div>
+  </h5>
+  <h5 *ngIf="shift.id==0" class="row pb-1 pt-1">
+    <div class="col">New Shift</div>
+  </h5>
+  <div class="form-group row">
+    <label for="input_name" class="col-sm-3 col-lg-2 col-form-label">Name</label>
+    <div class="col"><input class="form-control" id="input_name" type="text" [(ngModel)]=shift.name></div>
+  </div>
+  <div class="form-group row">
+    <label for="input_shortname" class="col-sm-3 col-lg-2 col-form-label">Shortname</label>
+    <div class="col"><input class="form-control" id="input_shortname" type="text" [(ngModel)]=shift.shortname></div>
+  </div>
+  <div class="form-group row">
+    <label for="input_starttime" class="col-sm-3 col-lg-2 col-form-label">Starttime</label>
+    <div class="col"><input class="form-control" id="input_starttime" type="text" [(ngModel)]=shift.starttime></div>
+  </div>
+  <div class="form-group row">
+    <label for="input_duration" class="col-sm-3 col-lg-2 col-form-label">Duration</label>
+    <div class="col"><input class="form-control" id="input_duration" type="text" [(ngModel)]=shift.duration></div>
+  </div>
+  <button class="btn btn-primary" (click)="save()">Save</button>
+  <button class="btn btn-danger" (click)="cancel()">Cancel (Back)</button>
 </div>
