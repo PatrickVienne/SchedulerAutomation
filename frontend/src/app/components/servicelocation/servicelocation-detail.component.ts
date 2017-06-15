@@ -13,7 +13,6 @@ import 'rxjs/add/operator/switchMap';
 export class ServicelocationDetailComponent implements OnInit {
 
   servicelocation: ServiceLocation;
-  exists: boolean;
 
   constructor(private servicelocationService: ServiceLocationService, private router: ActivatedRoute, private location: Location) { }
 

@@ -33,7 +33,6 @@ export class ServicelocationsComponent implements OnInit {
     this.servicelocationService.delete(servicelocation.id)
       .then(() => {
         this.servicelocations = this.servicelocations.filter(e => e !== servicelocation);
-        //if (this.selectedHero === hero) { this.selectedHero = null; }
       })
   }
 
