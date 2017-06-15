@@ -1,6 +1,5 @@
-import os
-
 import datetime
+import os
 import random
 
 from flask import Flask
@@ -9,8 +8,8 @@ from flask_security import Security, utils
 
 from app_utils import utilities
 from config import CONFIG
-from create_scripts import stringgenerator, boolgenerator
-from models import Employee, db, user_datastore, Servicelocation, Role
+from create_scripts import stringgenerator, boolgenerator, timegenerator, durationgenerator
+from models import Employee, db, user_datastore, Servicelocation, Role, Shift
 
 
 def create_app():
@@ -31,6 +30,8 @@ def create_seed():
     create_roles(5)
     create_servicelocations(10)
     create_employees(15)
+    create_shifts(15)
+
 
 def create_servicelocations(N):
     if not Servicelocation.query.first():
@@ -46,6 +47,18 @@ def create_roles(N):
         for _ in range(N):
             sn, desc = stringgenerator(4), stringgenerator(15)
             user_datastore.create_role(name=sn, description=desc)
+        db.session.commit()
+
+
+def create_shifts(N):
+    if not Shift.query.first():
+        for _ in range(N):
+            name = stringgenerator(20)
+            shortname = "_" + name[:5]
+            starttime = timegenerator()
+            duration = durationgenerator()
+            Sh = Shift(name=name, shortname=shortname, starttime=starttime, duration=duration)
+            db.session.add(Sh)
         db.session.commit()
 
 
@@ -68,8 +81,6 @@ def create_employees(N):
             vacationdays=100
         )
 
-
-
         for _ in range(N):
             sl = random.choice(sls)
             r = random.choice(rs)
@@ -88,6 +99,6 @@ def create_employees(N):
                 weeklyhours=wh,
                 vacationdays=vd)
 
-            user_datastore.add_role_to_user(u,r)
+            user_datastore.add_role_to_user(u, r)
 
         db.session.commit()

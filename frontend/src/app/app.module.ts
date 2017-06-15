@@ -26,6 +26,8 @@ import { RolesComponent } from './components/role/roles.component';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { DropdownlistComponent } from './components/dropdownlist/dropdownlist.component';
 import { ServiceLocationDropdownlistComponent } from './components/services_dropdownlist/sl_dropdownlist.component';
+import { ShiftComponent } from './shift/shift.component';
+import { ShiftsComponent } from './components/shifts/shifts.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ServiceLocationDropdownlistComponent } from './components/services_drop
     DropdownlistComponent,
     ServiceLocationDropdownlistComponent,
     CollapseDirective,
+    ShiftComponent,
+    ShiftsComponent,
   ],
   imports: [
     DateValueAccessorModule,

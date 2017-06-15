@@ -1,5 +1,3 @@
-import datetime
-from flask import Flask
 from flask_security import RoleMixin, SQLAlchemyUserDatastore, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 
@@ -35,12 +33,14 @@ class Role(Base, RoleMixin):
     def __repr__(self):
         """String representation of the class."""
         return '<Role %r>' % self.name
+
     def to_dict(self):
         tmp = self.__dict__
         del tmp['_sa_instance_state']
         del tmp['created_at']
         del tmp['modified_at']
         return tmp
+
 
 class Servicelocation(Base):
     __tablename__ = 'servicelocation'
@@ -49,12 +49,14 @@ class Servicelocation(Base):
     name = db.Column(db.String(50), nullable=False)
     nightshiftneeded = db.Column(db.Boolean())
     comment = db.Column(db.String(255))
+
     def to_dict(self):
         tmp = self.__dict__
         del tmp['_sa_instance_state']
         del tmp['created_at']
         del tmp['modified_at']
         return tmp
+
 
 class Employee(Base, UserMixin):
     __tablename__ = 'employee'
@@ -93,7 +95,7 @@ class Employee(Base, UserMixin):
         del tmp['created_at']
         del tmp['modified_at']
         del tmp['password']
-        #datetime.datetime.utcfromtimestamp(tmp['employedsine'])
+        # datetime.datetime.utcfromtimestamp(tmp['employedsine'])
         tmp['employedsince'] = tmp['employedsince'].strftime("%Y-%m-%d")
         return tmp
 
@@ -101,6 +103,25 @@ class Employee(Base, UserMixin):
         return '<User %r>' % self.username
 
 
-#db.create_all()
+class Shift(Base):
+    name = db.Column(db.String(255), nullable=False)
+    shortname = db.Column(db.String(255), nullable=False)
+    starttime = db.Column(db.Time(), nullable=False)
+    duration = db.Column(db.Interval(), nullable=False)
+
+    def to_dict(self):
+        tmp = self.__dict__
+        del tmp['_sa_instance_state']
+        del tmp['created_at']
+        del tmp['modified_at']
+        # datetime.datetime.utcfromtimestamp(tmp['employedsine'])
+        tmp['starttime'] = tmp['starttime'].strftime("%H:%M:%S")
+        return tmp
+
+    def __repr__(self):
+        return '<Shift %r>' % self.name
+
+
+# db.create_all()
 
 user_datastore = SQLAlchemyUserDatastore(db, Employee, Role)

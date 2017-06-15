@@ -4,14 +4,11 @@ from flask import request, make_response
 from flask_security import auth_token_required
 from gevent.wsgi import WSGIServer
 
-from models import Employee, db, Servicelocation, Role
+from models import Employee, db, Servicelocation, Role, Shift
 from factory import create_app, create_seed
 
 logger = logging.getLogger(__name__)
 app = create_app()
-
-
-# Flask(__name__)
 
 
 @app.before_first_request
@@ -187,6 +184,61 @@ def delete_role(id):
         db.session.delete(role)
         db.session.commit()
     return "Deleting %i" % id
+
+
+@app.route('/shift/get_shifts', methods=['GET'])
+def get_shifts():
+    return json.dumps([shift.to_dict() for shift in Shift.query.all()])
+
+
+@app.route('/shift/get/<int:id>', methods=['GET'])
+def get_shift(id):
+    shift = Shift.query.get(id)
+    if shift:
+        return json.dumps(shift.to_dict())
+    else:
+        return json.dumps({"id": 0, "name": ""})
+
+
+@app.route('/shift/create', methods=['PUT'])
+def create_shift():
+    # print request.
+    shift_data = json.loads(request.data)
+    shift = Shift()
+    for k, v in shift_data.iteritems():
+        if k == 'id': continue
+        shift.__setattr__(k, v)
+    db.session.add(shift)
+    db.session.commit()
+    return make_response()
+
+
+@app.route('/shift/update', methods=['PUT'])
+def edit_shift():
+    # print request.
+    shift_data = json.loads(request.data)
+    shift = Shift.query.get(shift_data['id'])
+    if shift:
+        for k, v in shift_data.iteritems():
+            if k == 'id': continue
+            shift.__setattr__(k, v)
+        db.session.commit()
+        return make_response()
+    else:
+        return make_response()
+
+
+@app.route('/shift/delete/<int:id>', methods=['DELETE'])
+def delete_shift(id):
+    # print request.
+    shift = Shift.query.get(id)
+    print shift
+    if shift:
+        db.session.delete(shift)
+        db.session.commit()
+    return "Deleting %i" % id
+
+
 
 
 def main():
