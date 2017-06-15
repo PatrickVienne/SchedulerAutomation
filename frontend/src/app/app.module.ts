@@ -17,6 +17,7 @@ import {
 import { EmployeeService } from './services/employee.service';
 import { ServiceLocationService } from './services/servicelocation.service';
 import { RoleService } from './services/role.service';
+import { ShiftService } from './services/shift.service';
 
 import { EmployeeDetailComponent } from './components/employee/employee-detail.component';
 import { ServicelocationsComponent } from './components/servicelocation/servicelocations.component';
@@ -26,8 +27,8 @@ import { RolesComponent } from './components/role/roles.component';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { DropdownlistComponent } from './components/dropdownlist/dropdownlist.component';
 import { ServiceLocationDropdownlistComponent } from './components/services_dropdownlist/sl_dropdownlist.component';
-import { ShiftComponent } from './shift/shift.component';
-import { ShiftsComponent } from './components/shifts/shifts.component';
+import { ShiftsComponent } from './components/shift/shifts.component';
+import { ShiftDetailComponent } from './components/shift/shift-detail.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +42,8 @@ import { ShiftsComponent } from './components/shifts/shifts.component';
     DropdownlistComponent,
     ServiceLocationDropdownlistComponent,
     CollapseDirective,
-    ShiftComponent,
     ShiftsComponent,
+    ShiftDetailComponent,
   ],
   imports: [
     DateValueAccessorModule,
@@ -52,7 +53,7 @@ import { ShiftsComponent } from './components/shifts/shifts.component';
     AlertModule.forRoot(),  
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
-  providers: [EmployeeService, ServiceLocationService, RoleService],
+  providers: [EmployeeService, ServiceLocationService, RoleService, ShiftService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

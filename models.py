@@ -116,6 +116,7 @@ class Shift(Base):
         del tmp['modified_at']
         # datetime.datetime.utcfromtimestamp(tmp['employedsine'])
         tmp['starttime'] = tmp['starttime'].strftime("%H:%M:%S")
+        tmp['duration'] = str(tmp['duration'])
         return tmp
 
     def __repr__(self):

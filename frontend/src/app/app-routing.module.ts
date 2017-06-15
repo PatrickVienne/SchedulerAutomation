@@ -7,6 +7,8 @@ import { ServicelocationsComponent } from './components/servicelocation/servicel
 import { ServicelocationDetailComponent } from './components/servicelocation/servicelocation-detail.component';
 import { RolesComponent } from './components/role/roles.component';
 import { RoleDetailComponent } from './components/role/role-detail.component';
+import { ShiftsComponent } from './components/shift/shifts.component';
+import { ShiftDetailComponent } from './components/shift/shift-detail.component';
 
 
 
@@ -34,6 +36,14 @@ export const ROUTES: Routes = [
       {
         path: 'roles_detail/:id',
         component: RoleDetailComponent
+      },
+      {
+        path: 'shifts',
+        component: ShiftsComponent
+      },
+      {
+        path: 'shifts_detail/:id',
+        component: ShiftDetailComponent
       }
 
 
