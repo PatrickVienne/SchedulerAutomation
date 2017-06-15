@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { RoleService } from '../../services/role.service';
 
-import{ Role } from '../../models/role';
+import { Role } from '../../models/role';
 
 @Component({
   selector: 'app-roles',
@@ -29,11 +29,17 @@ export class RolesComponent implements OnInit {
 
   edit(role: Role): void {
     console.log(role.id)
-    this.router.navigate(["/roles_detail",role.id]);
+    this.router.navigate(["/roles_detail", role.id]);
   }
 
   create(role: Role): void {
-    this.router.navigate(["/roles_detail",0]);
+    this.router.navigate(["/roles_detail", 0]);
+  }
+
+  delete(role: Role): void {
+    this.roleService.delete(role.id).then(() => {
+      this.roles = this.roles.filter(e => e !== role);
+    })
   }
 
 }

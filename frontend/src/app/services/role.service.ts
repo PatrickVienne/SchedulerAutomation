@@ -41,6 +41,13 @@ export class RoleService {
       .catch(Handler.handleError);
   }
 
+  delete(id: number): Promise<void> {
+      const url = `${this.roleUrl}/delete/${id}`;
+      return this.http.delete(url, { headers: this.headers })
+          .toPromise()
+          .then(() => null)
+          .catch(Handler.handleError);
+  }
 }
 
 

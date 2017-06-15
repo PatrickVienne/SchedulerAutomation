@@ -35,8 +35,6 @@ export class ServiceLocationService {
           .catch(Handler.handleError);
   }
 
-
-
   update(serviceLocation: ServiceLocation): Promise<null>{
     return this.http.put(this.servicelocationUrl + "/update", JSON.stringify(serviceLocation), { headers: this.headers })
             .toPromise()

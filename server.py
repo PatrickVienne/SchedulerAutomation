@@ -39,6 +39,7 @@ def create_employee():
         if k == 'id': continue
         emp.__setattr__(k, v)
     db.session.add(emp)
+    db.session.commit()
     return make_response()
 
 
@@ -91,6 +92,7 @@ def create_servicelocation():
         if k == 'id': continue
         sloc.__setattr__(k, v)
     db.session.add(sloc)
+    db.session.commit()
     return make_response()
 
 
@@ -157,6 +159,7 @@ def create_role():
         if k == 'id': continue
         role.__setattr__(k, v)
     db.session.add(role)
+    db.session.commit()
     return make_response()
 
 
