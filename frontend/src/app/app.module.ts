@@ -25,6 +25,7 @@ import { RoleDetailComponent } from './components/role/role-detail.component';
 import { RolesComponent } from './components/role/roles.component';
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { DropdownlistComponent } from './components/dropdownlist/dropdownlist.component';
+import { ServiceLocationDropdownlistComponent } from './components/services_dropdownlist/sl_dropdownlist.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DropdownlistComponent } from './components/dropdownlist/dropdownlist.co
     RoleDetailComponent,
     RolesComponent,
     DropdownlistComponent,
+    ServiceLocationDropdownlistComponent,
     CollapseDirective,
   ],
   imports: [

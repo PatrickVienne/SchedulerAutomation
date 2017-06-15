@@ -1,0 +1,3 @@
+<select name="top5" class="custom-select form-control" [(ngModel)]="selectedLocation"  (change)="selectEvent($event)">
+  <option *ngFor="let item of dropdownitems" [ngValue]="item"> ITEM: {{item.name}} {{item.id}}</option>
+</select>
