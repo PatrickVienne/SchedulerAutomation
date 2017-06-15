@@ -1,3 +1,14 @@
-<p>
-  role-detail works!
-</p>
+<div class="container" *ngIf="role">
+    <h5 *ngIf="role.id!=0" class="row pb-1 pt-1">
+        <div class="col">Role ID {{role.id}}</div>
+    </h5>
+    <h5 *ngIf="role.id==0" class="row pb-1 pt-1">
+        <div class="col">New Role</div>
+    </h5>
+    <div class="form-group row">
+        <label for="input_name" class="col-sm-3 col-lg-2 col-form-label">Name</label>
+        <div class="col"><input class="form-control" id="input_name" type="text" [(ngModel)]=role.name></div>
+    </div>
+    <button class="btn btn-primary" (click)="save()">Save</button>
+    <button class="btn btn-danger" (click)="cancel()">Cancel (Back)</button>
+</div>

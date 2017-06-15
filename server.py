@@ -10,6 +10,7 @@ from factory import create_app, create_seed
 logger = logging.getLogger(__name__)
 app = create_app()
 
+
 # Flask(__name__)
 
 
@@ -22,6 +23,7 @@ def init():
 def hello_world():
     return json.dumps([{"id": 1, "name": "wtf"}])
 
+
 @app.route("/testauth")
 @auth_token_required
 def testauth():
@@ -33,7 +35,7 @@ def create_employee():
     # print request.
     employee_data = json.loads(request.data)
     emp = Employee()
-    for k,v in employee_data.iteritems():
+    for k, v in employee_data.iteritems():
         if k == 'id': continue
         emp.__setattr__(k, v)
     db.session.add(emp)
@@ -46,7 +48,7 @@ def edit_employee():
     employee_data = json.loads(request.data)
     emp = Employee.query.get(employee_data['id'])
     if emp:
-        for k,v in employee_data.iteritems():
+        for k, v in employee_data.iteritems():
             if k == 'id': continue
             emp.__setattr__(k, v)
         db.session.commit()
@@ -77,7 +79,7 @@ def get_employee(id):
     if emp:
         return json.dumps(emp.to_dict())
     else:
-        return json.dumps({"id": 0, "firstname":""})
+        return json.dumps({"id": 0, "firstname": ""})
 
 
 @app.route('/servicelocation/create', methods=['PUT'])
@@ -85,7 +87,7 @@ def create_servicelocation():
     # print request.
     servicelocation_data = json.loads(request.data)
     sloc = Servicelocation()
-    for k,v in servicelocation_data.iteritems():
+    for k, v in servicelocation_data.iteritems():
         if k == 'id': continue
         sloc.__setattr__(k, v)
     db.session.add(sloc)
@@ -98,7 +100,7 @@ def edit_servicelocation():
     servicelocation_data = json.loads(request.data)
     sloc = Servicelocation.query.get(servicelocation_data['id'])
     if sloc:
-        for k,v in servicelocation_data.iteritems():
+        for k, v in servicelocation_data.iteritems():
             if k == 'id': continue
             sloc.__setattr__(k, v)
         db.session.commit()
@@ -129,12 +131,59 @@ def get_servicelocation(id):
     if sloc:
         return json.dumps(sloc.to_dict())
     else:
-        return json.dumps({"id": 0, "name":""})
+        return json.dumps({"id": 0, "name": ""})
 
 
 @app.route('/role/get_roles', methods=['GET'])
 def get_roles():
     return json.dumps([role.to_dict() for role in Role.query.all()])
+
+
+@app.route('/role/get/<int:id>', methods=['GET'])
+def get_role(id):
+    role = Role.query.get(id)
+    if role:
+        return json.dumps(role.to_dict())
+    else:
+        return json.dumps({"id": 0, "name": ""})
+
+
+@app.route('/role/create', methods=['PUT'])
+def create_role():
+    # print request.
+    role_data = json.loads(request.data)
+    role = Role()
+    for k, v in role_data.iteritems():
+        if k == 'id': continue
+        role.__setattr__(k, v)
+    db.session.add(role)
+    return make_response()
+
+
+@app.route('/role/update', methods=['PUT'])
+def edit_role():
+    # print request.
+    role_data = json.loads(request.data)
+    role = Role.query.get(role_data['id'])
+    if role:
+        for k, v in role_data.iteritems():
+            if k == 'id': continue
+            role.__setattr__(k, v)
+        db.session.commit()
+        return make_response()
+    else:
+        return make_response()
+
+
+@app.route('/role/delete/<int:id>', methods=['DELETE'])
+def delete_role(id):
+    # print request.
+    role = Role.query.get(id)
+    print role
+    if role:
+        db.session.delete(role)
+        db.session.commit()
+    return "Deleting %i" % id
 
 
 def main():
